@@ -344,11 +344,11 @@ namespace BitMiracle.Tiff2Pdf
                 return;
             }
 
-            using (Tiff input = Tiff.Open(inputFileName, "r"))
+            using (Tiff input = OpenTiff(inputFileName))
             {
                 if (input == null)
                 {
-                    Tiff.Error(Tiff2PdfConstants.TIFF2PDF_MODULE, "Can't open input file {0} for reading", args[argn - 1]);
+                    Tiff.Error(Tiff2PdfConstants.TIFF2PDF_MODULE, "Can't open input file {0} for reading", inputFileName);
                     return;
                 }
 
@@ -418,6 +418,18 @@ namespace BitMiracle.Tiff2Pdf
                 }
                 t2p.m_outputfile.Dispose();
             }
+        }
+
+        static Tiff OpenTiff(string filename)
+        {
+            if (filename != "-")
+                return Tiff.Open(filename, "r");
+
+            var inputStream = new MemoryStream();
+            CopyStream(Console.OpenStandardInput(), inputStream);
+            inputStream.Seek(0, SeekOrigin.Begin);
+
+            return Tiff.ClientOpen("-", "r", inputStream, new TiffStream());
         }
 
         static void CopyStream(Stream input, Stream output)
