@@ -378,7 +378,7 @@ namespace BitMiracle.Tiff2Pdf
                 else
                 {
                     outfilename = "-";
-                    t2p.m_outputfile = Console.OpenStandardOutput();
+                    t2p.m_outputfile = new MemoryStream();
                 }
 
                 using (Tiff output = Tiff.ClientOpen(outfilename, "w", t2p, t2p.m_stream))
@@ -411,7 +411,22 @@ namespace BitMiracle.Tiff2Pdf
                     }
                 }
 
+                if (outfilename == "-")
+                {
+                    t2p.m_outputfile.Seek(0, SeekOrigin.Begin);
+                    CopyStream(t2p.m_outputfile, Console.OpenStandardOutput());
+                }
                 t2p.m_outputfile.Dispose();
+            }
+        }
+
+        static void CopyStream(Stream input, Stream output)
+        {
+            byte[] buffer = new byte[32768];
+            int read;
+            while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+            {
+                output.Write(buffer, 0, read);
             }
         }
 
