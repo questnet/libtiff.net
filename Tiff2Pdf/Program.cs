@@ -184,7 +184,7 @@ namespace BitMiracle.Tiff2Pdf
             for (; argn < args.Length; argn++)
             {
                 string arg = args[argn];
-                if (arg[0] != '-')
+                if (arg == "-" || arg[0] != '-')
                     break;
 
                 string optarg = null;
