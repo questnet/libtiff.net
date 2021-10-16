@@ -5,6 +5,8 @@ The .NET version of original libtiff library written by Sam Leffler and others.
 
 LibTiff.Net provides support for the Tag Image File Format (TIFF), a widely used format for storing image data.
 
+This is a slightly modified version that we use in our software products. The `qn` branch is ours, and the `master` branch represents the version of the [upstream repository](https://github.com/BitMiracle/libtiff.net) we rebased our commits onto.
+
 Sample code
 ===========
 
