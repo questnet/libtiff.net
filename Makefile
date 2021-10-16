@@ -1,5 +1,6 @@
 .PHONY: all
-all: build-lib
+all: 
+	@echo Take a look at the Makefile to find out more.
 
 .PHONY: publish-lib
 publish-lib: 
