@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <PackageId>Tiff2PdfLib</PackageId>
+    <Version>0.2.0</Version>
+    <Authors>questnet GmbH and the and the libTiff.net authors</Authors>
+    <Company>questnet GmbH</Company>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Tiff2Pdf\Program.cs" Link="Program.cs" />
+    <Compile Include="..\Tiff2Pdf\T2P.cs" Link="T2P.cs" />
+    <Compile Include="..\Tiff2Pdf\Types.cs" Link="Types.cs" />
+    <Compile Include="..\Tiff2Pdf\MyErrorHandler.cs" Link="MyErrorHandler.cs" />
+    <Compile Include="..\Tiff2Pdf\MyStream.cs" Link="MyStream.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BitMiracle.LibTiff.NET" Version="2.4.649" />
+  </ItemGroup>
+
+</Project>
