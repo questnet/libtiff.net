@@ -1,11 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Tiff2PdfLib</PackageId>
-    <Version>0.2.0</Version>
+    <Version>0.3.0</Version>
     <Authors>questnet GmbH and the and the libTiff.net authors</Authors>
     <Company>questnet GmbH</Company>
+    <LangVersion>8</LangVersion>
+    <AssemblyName>Tiff2PdfLib</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

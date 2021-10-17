@@ -9,22 +9,22 @@ namespace Tiff2PdfLib
     {
         const string UnnamedFile = "-";
 
-        /// Converts TIFF stream to a PDF stream.
+        /// Converts a TIFF stream to a PDF stream.
         public static void ConvertStream(Stream inputStream, Stream outputStream)
         {
             using var input = Tiff.ClientOpen(UnnamedFile, "r", inputStream, new TiffStream());
             if (input == null)
             {
-                throw new Exception($"Can't open input stream for reading");
+                throw new Exception("Can't open input stream for reading");
             }
 
             var t2p = new T2P
             {
-                m_testFriendly = false, 
+                m_testFriendly = false,
                 m_outputfile = outputStream
             };
             t2p.validate();
-            
+
             using var output = Tiff.ClientOpen(UnnamedFile, "w", t2p, t2p.m_stream);
             if (output == null)
             {
