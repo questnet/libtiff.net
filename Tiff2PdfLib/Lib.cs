@@ -30,7 +30,11 @@ namespace Tiff2PdfLib
             {
                 throw new Exception("Can't initialize output descriptor");
             }
-
+            
+            object client = output.Clientdata();
+            TiffStream stream = output.GetStream();
+            stream.Seek(client, 0, SeekOrigin.Begin);
+            
             t2p.write_pdf(input, output);
             if (t2p.m_error)
             {
